@@ -6,7 +6,7 @@ import './App.css';
 
 function App() {
 
-  const [addTeamMember, setAddTeamMember] = useState([
+  const [team, setAddTeamMember] = useState([
     {
       name: "Emilio Crocco",
       email: "emilio-crocco@lambdastudents.com",
@@ -24,21 +24,16 @@ function App() {
     }
   ]);
 
-  const handleSubmit = (newTeamMember) => {
-    setAddTeamMember([ ...addTeamMember, newTeamMember ]);
-  }
-
   return (
     <div className = "appContainer">
+      <h1>Add a Team member:</h1>
+      <TeamForm setTeam={setAddTeamMember}
+      team={team}
+      />
       <h1>My Team:</h1>
-      <TeamForm onSubmit={handleSubmit}  />
-      <TeamList team={addTeamMember} />
+      <TeamList team={team} />
     </div>
-    
   );
-
-  }
-
-  
+}
 
 export default App;
