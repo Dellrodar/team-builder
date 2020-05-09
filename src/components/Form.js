@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState } from "react";
 
 const TeamForm = (props) => {
         const [formData, setFormData] = useState({
@@ -11,9 +11,15 @@ const TeamForm = (props) => {
           setFormData({ name: '', email: '', role: '' });
         };
 
+        useEffect(() => { setFormData(props.memberToEdit) }, [ props.memberToEdit ]);
+
         const handleSubmit = (event) => {
           event.preventDefault();
-          props.setTeam([ ...props.team, formData ]);
+          if (formData.isEditing){
+            props.editMember(formData);
+          } else {
+            props.onSubmit([ ...props.team, formData])
+          }
           clearForm();
         };
 
