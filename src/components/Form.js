@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-function TeamForm(){
-    const NoteForm = (props) => {
+const TeamForm = (props) => {
         const [formData, setFormData] = useState({
           name: '',
           email: '',
@@ -24,28 +23,37 @@ function TeamForm(){
 
         return (
           <form onSubmit={handleSubmit}>
-            <label htmlFor="title">Title:</label>
+            <label htmlFor="name">Name:</label>
             <input
-              id="title"
-              name="title"
+              id="name"
+              name="name"
               type="text"
-              value={formData.title}
+              placeholder="Team Member's Name"
+              value={formData.name}
               onChange={handleChange}
             />
-            <label htmlFor="body">Body:</label>
-            <textarea
-              id="body"
-              name="body"
+            <label htmlFor="role">Role:</label>
+            <input
+              id="role"
+              name="role"
               type="text"
-              placeholder="Some text you want to remember..."
-              value={formData.body}
+              placeholder="Job Role"
+              value={formData.role}
               onChange={handleChange}
             />
-            <button type="submit">Save!</button>
+            <label htmlFor="email">Email:</label>
+            <input
+              id="email"
+              name="email"
+              type="text"
+              placeholder="Enter your email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+            <button type="submit">Save Team Member!</button>
           </form>
         );
       };
-}
 
 
 export default TeamForm;
